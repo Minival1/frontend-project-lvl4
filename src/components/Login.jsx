@@ -1,13 +1,16 @@
 import React from 'react'
 import { Formik } from "formik";
-import { Link } from "react-router-dom"; 
+import { Link, useHistory } from 'react-router-dom';
 import axios from "axios";
 import routes from "../routes";
 
 import { Form, Button } from 'react-bootstrap';
+import { useAuth } from '../helpers/auth-helper';
 
 const Login = (props) => {
-    
+    const auth = useAuth();
+    const history = useHistory();
+
     return (
         <div className="container-fluid">
             <div className="row justify-content-center pt-5">
@@ -15,10 +18,11 @@ const Login = (props) => {
                     <Formik
                         initialValues={{ username: '', password: '' }}
                         onSubmit={async (values) => {
-                            console.log(values);
                             const res = await axios.post(routes.loginPath(), values);
-                            localStorage.setItem("token", res.data.token);
-                            console.log(res.data);
+                            const { token } = res.data;
+                            auth.signIn(token);
+
+                            history.push(routes.channelsPagePath());
                         }}
                     >
                         {({ isSubmitting, handleSubmit, handleChange }) => (

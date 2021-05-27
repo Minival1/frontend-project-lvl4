@@ -1,4 +1,4 @@
-// @ts-check
+
 
 // TODO rewrite tests
 import buildApp from '../server/index.js';

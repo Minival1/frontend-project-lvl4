@@ -1,4 +1,8 @@
 import React, { createContext, useState, useContext } from "react";
+import axios from 'axios';
+import routes from '../routes';
+import { addChannel } from '../channelsSlice';
+import store from "../store";
 
 const nameKey = "token";
 

@@ -1,4 +1,4 @@
-// @ts-check
+
 
 const host = '';
 const prefix = 'api/v1';
@@ -11,5 +11,6 @@ export default {
   loginFormPath: () => [host, "login"].join("/"),
   errorPagePath: () => [host, "*"].join("/"),
   channelsPagePath: () => [host, "channels"].join("/"),
-  loginPath: () => [host, prefix, "login"].join("/")
+  loginPath: () => [host, prefix, "login"].join("/"),
+  dataChats: () => [host, prefix, "data"].join("/")
 };

@@ -1,4 +1,4 @@
-// @ts-check
+
 
 import Pug from 'pug';
 import path from 'path';
