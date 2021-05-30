@@ -34,8 +34,7 @@ const App = () => {
                     </Route>
                     <Route path={routes.channelsPagePath()}>
                         <ProvideAuth>
-                            <Chat/>
-                        </ProvideAuth>
+                            <Chat/>                        </ProvideAuth>
                     </Route>
                     <Route path={routes.errorPagePath()}>
                         <E404/>

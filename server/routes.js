@@ -15,7 +15,20 @@ const buildState = (defaultState) => {
       { id: generalChannelId, name: 'general', removable: false },
       { id: randomChannelId, name: 'random', removable: false },
     ],
-    messages: [],
+    messages: [
+      {
+        message: "hello",
+        username: "admin",
+        channelId: 1,
+        id: 1
+      },
+      {
+        message: "How are you",
+        username: "Sasha",
+        channelId: 1,
+        id: 2
+      }
+    ],
     currentChannelId: generalChannelId,
     users: [
       { id: 1, username: 'admin', password: 'admin' },
@@ -50,7 +63,7 @@ export default (app, defaultState = {}) => {
         id: getNextId(),
       };
       state.messages.push(messageWithId);
-      acknowledge({ status: 'ok' });
+      // acknowledge({ status: 'ok' });
       app.io.emit('newMessage', messageWithId);
     });
 

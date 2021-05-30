@@ -8,7 +8,7 @@ const Navbar = (props) => {
     const handlerLogout = () => {
         auth.signOut();
     }
-    
+
     return (
         <nav className="mb-3 navbar navbar-expand-lg navbar-light bg-light">
             <div className="container">
