@@ -7,6 +7,8 @@ import { setInitialState } from '../channelsSlice';
 import { useAuth } from '../helpers/auth-helper';
 import { useDispatch } from 'react-redux';
 import FormMessage from './FormMessage';
+import { openModal } from '../modalSlice';
+import ModalAddChannel from './ModalAddChannel';
 
 const Chat = (props) => {
     const auth = useAuth();
@@ -25,12 +27,16 @@ const Chat = (props) => {
 
     }, [])
 
+    const handlerAddChannel = () => {
+        dispatch(openModal({ type: "addChannel" }));
+    }
+
     return (
         <div className="container flex-grow-1 my-4 overflow-hidden rounded shadow">
             <div className="row h-100 bg-white">
                 <div className="col-2 px-0 pt-5 border-end bg-light">
                     <div className="d-flex justify-content-between mb-2 px-4"><span>Каналы</span>
-                        <button type="button" className="p-0 text-primary btn btn-group-vertical">
+                        <button type="button" className="p-0 text-primary btn btn-group-vertical" onClick={handlerAddChannel}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20"
                                  height="20" fill="currentColor">
                                 <path
@@ -50,6 +56,7 @@ const Chat = (props) => {
                     </div>
                 </div>
             </div>
+            <ModalAddChannel />
         </div>
     );
 };

@@ -75,7 +75,7 @@ export default (app, defaultState = {}) => {
       };
 
       state.channels.push(channelWithId);
-      acknowledge({ status: 'ok', data: channelWithId });
+      // acknowledge({ status: 'ok', data: channelWithId });
       app.io.emit('newChannel', channelWithId);
     });
 
@@ -85,7 +85,7 @@ export default (app, defaultState = {}) => {
       state.messages = state.messages.filter((m) => m.channelId !== channelId);
       const data = { id: channelId };
 
-      acknowledge({ status: 'ok' });
+      // acknowledge({ status: 'ok' });
       app.io.emit('removeChannel', data);
     });
 
@@ -95,7 +95,7 @@ export default (app, defaultState = {}) => {
       if (!channel) return;
       channel.name = name;
 
-      acknowledge({ status: 'ok' });
+      // acknowledge({ status: 'ok' });
       app.io.emit('renameChannel', channel);
     });
   });
