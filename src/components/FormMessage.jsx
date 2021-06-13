@@ -2,8 +2,11 @@ import React, { useRef } from 'react';
 import { Form, Formik } from 'formik';
 import { useSelector } from 'react-redux';
 import { useSocket } from '../helpers/socketContext';
+import { useAuth } from '../helpers/auth-helper';
 
 const FormMessage = (props) => {
+
+    const auth = useAuth();
 
     const currentChannelId = useSelector(state => state.channelsInfo.currentChannelId);
     const socket = useSocket();
@@ -15,12 +18,9 @@ const FormMessage = (props) => {
             <Formik
                 initialValues={{ message: '' }}
                 onSubmit={async (values, actions) => {
-                    if (!values.message.length) {
-                        return;
-                    }
 
                     socket.emit("newMessage", {
-                        username: "admin",
+                        username: auth.username,
                         message: values.message,
                         channelId: currentChannelId,
                     });
@@ -39,6 +39,7 @@ const FormMessage = (props) => {
                                    onChange={handleChange}
                                    value={values.message}
                                    ref={inputEl}
+                                   required
                             />
                             <div className="input-group-append">
                                 <button type="submit" className="btn btn-group-vertical">

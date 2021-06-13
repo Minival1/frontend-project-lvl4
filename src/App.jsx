@@ -11,6 +11,7 @@ import Channels from './components/Channels';
 import Auth from './components/Auth';
 import { ProvideAuth } from './helpers/auth-helper';
 import Chat from './components/Chat';
+import Register from './components/Register';
 
 const App = () => {
 
@@ -32,9 +33,15 @@ const App = () => {
                             <Login/>
                         </ProvideAuth>
                     </Route>
+                    <Route path={routes.registerPagePath()}>
+                        <ProvideAuth>
+                            <Register />
+                        </ProvideAuth>
+                    </Route>
                     <Route path={routes.channelsPagePath()}>
                         <ProvideAuth>
-                            <Chat/>                        </ProvideAuth>
+                            <Chat/>
+                        </ProvideAuth>
                     </Route>
                     <Route path={routes.errorPagePath()}>
                         <E404/>
